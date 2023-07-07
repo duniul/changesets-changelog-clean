@@ -29,6 +29,8 @@
     "lint": "rome check src",
     "prepublish": "npm run build",
     "test": "vitest",
+    "release": "changeset publish",
+    "version": "changeset version",
     "generate-example": "vitest example"
   },
   "dependencies": {
