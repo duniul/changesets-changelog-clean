@@ -47,7 +47,7 @@ describe(getReleaseLine.name, () => {
 
     expect(result).toMatchInlineSnapshot(`
       "- Added foo bar.  
-        <sup>PR: [\`#1500\`](https://test.test/pulls/1500) | Commit: [\`c1f7a8d\`](https://test.test/commits/c1f7a8d) | Author: [tester](https://test.test/users/tester)</sup>"
+      <sup>PR: [\`#1500\`](https://test.test/pulls/1500) | Commit: [\`c1f7a8d\`](https://test.test/commits/c1f7a8d) | Author: [tester](https://test.test/users/tester)</sup>"
     `);
   });
 });
@@ -91,7 +91,7 @@ describe(getDependencyReleaseLine.name, () => {
 
       <small>
 
-      [\`bde8a2c\`](https://github.com/test/test/marketplace/commit/bde8a2c) [\`ab36ce7\`](https://github.com/test/test/marketplace/commit/ab36ce7)
+      [\`bde8a2c\`](https://github.com/test/test/commit/bde8a2c) [\`ab36ce7\`](https://github.com/test/test/commit/ab36ce7)
 
       </small>
 
