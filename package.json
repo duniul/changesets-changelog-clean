@@ -27,7 +27,6 @@
     "format": "rome format src --write",
     "lint:fix": "rome check src --apply-suggested",
     "lint": "rome check src",
-    "preinstall": "npx only-allow pnpm",
     "prepublish": "npm run build",
     "test": "vitest",
     "generate-example": "vitest example"
