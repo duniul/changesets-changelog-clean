@@ -29,10 +29,7 @@ yarn add changesets-changelog-clean
 
 ## Examples
 
-To see examples of generated changelogs, have a look at:
-
-- [examples/example-changelog.md](./examples/example-changelog.md): A changelog generated with the default options.
-- [examples/example-changelog-inline.md](./examples/example-changelog-inline.md): A changelog generated with `inline: true`.
+See [examples/example-changelog.md](./examples/example-changelog.md) for an example changelog.
 
 ## Options
 
@@ -44,9 +41,6 @@ The options should be passed as the second argument in the array passed to the `
 
 - `repo`: The Github repo (including scope, like user or org) to link and look up PRs in (like `repo-scope/repo-name`).  
   Required.
-- `inline`: Whether to generate the changelog inline, or with a link to the PR. See [this file](./examples/example-changelog-inline.md) for
-  an example of the output.  
-  Default: `false`.
 - `capitalize`: Whether to capitalize the first letter of the summary.  
   Default: `true`.
 

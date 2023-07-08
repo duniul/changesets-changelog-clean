@@ -206,11 +206,6 @@ async function generate(options: ChangelogOptions) {
 }
 
 it('generates the example changelog', async () => {
-  await fs.promises.writeFile('./examples/example-changelog.md', await generate({ repo: 'example/repo', inlineLinks: false }));
-  expect(true).toBe(true);
-});
-
-it('generates the example changelog with inline links', async () => {
-  await fs.promises.writeFile('./examples/example-changelog-inline.md', await generate({ repo: 'example/repo', inlineLinks: true }));
+  await fs.promises.writeFile('./examples/example-changelog.md', await generate({ repo: 'example/repo' }));
   expect(true).toBe(true);
 });

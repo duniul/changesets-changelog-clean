@@ -45,10 +45,7 @@ describe(getReleaseLine.name, () => {
       user: 'tester',
     });
 
-    expect(result).toMatchInlineSnapshot(`
-      "- Added foo bar.  
-      <sup>PR: [\`#1500\`](https://test.test/pulls/1500) | Commit: [\`c1f7a8d\`](https://test.test/commits/c1f7a8d) | Author: [tester](https://test.test/users/tester)</sup>"
-    `);
+    expect(result).toMatchInlineSnapshot('"- Added foo bar. _[`#1500`](https://test.test/pulls/1500) [`c1f7a8d`](https://test.test/commits/c1f7a8d) [tester](https://test.test/users/tester)_"');
   });
 });
 

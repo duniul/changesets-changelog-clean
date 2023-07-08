@@ -2,10 +2,8 @@
 
 ### Patch Changes
 
-- Fix bug with `range` function returning incorrect range  
-<sup>PR: [`#122`](this-is-just-an-example) | Commit: [`28a1217`](this-is-just-an-example) | Author: [@exampleguy](this-is-just-an-example)</sup>
-- Fix incorrect typings for `shuffle` function  
-<sup>PR: [`#121`](this-is-just-an-example) | Commit: [`0c783e7`](this-is-just-an-example) | Author: [@JustAnExample](this-is-just-an-example)</sup>
+- Fix bug with `range` function returning incorrect range _[`#122`](this-is-just-an-example) [`28a1217`](this-is-just-an-example) [@exampleguy](this-is-just-an-example)_
+- Fix incorrect typings for `shuffle` function _[`#121`](this-is-just-an-example) [`0c783e7`](this-is-just-an-example) [@JustAnExample](this-is-just-an-example)_
 
 <details><summary>Updated 2 dependencies</summary>
 
@@ -25,31 +23,24 @@
 
 ### Minor Changes
 
-- Add new `keyBy` function for creating object maps  
-<sup>PR: [`#120`](this-is-just-an-example) | Commit: [`b15e41d`](this-is-just-an-example) | Author: [@somegal](this-is-just-an-example)</sup>
+- Add new `keyBy` function for creating object maps _[`#120`](this-is-just-an-example) [`b15e41d`](this-is-just-an-example) [@somegal](this-is-just-an-example)_
 
 ## 2.0.0
 
 ### Major Changes
 
-- **BREAKING CHANGE**: Drop support for Node 12  
-<sup>PR: [`#115`](this-is-just-an-example) | Commit: [`e2ee02f`](this-is-just-an-example) | Author: [@anothaone](this-is-just-an-example)</sup>
-- **BREAKING CHANGE**: Remove all deprecated functions  
-<sup>PR: [`#114`](this-is-just-an-example) | Commit: [`d15a2e5`](this-is-just-an-example) | Author: [@exampleguy](this-is-just-an-example)</sup>
+- **BREAKING CHANGE**: Drop support for Node 12 _[`#115`](this-is-just-an-example) [`e2ee02f`](this-is-just-an-example) [@anothaone](this-is-just-an-example)_
+- **BREAKING CHANGE**: Remove all deprecated functions _[`#114`](this-is-just-an-example) [`d15a2e5`](this-is-just-an-example) [@exampleguy](this-is-just-an-example)_
 
 ### Minor Changes
 
-- Add new `pipe` function for composing functions  
-<sup>PR: [`#116`](this-is-just-an-example) | Commit: [`5136b58`](this-is-just-an-example) | Author: [@somegal](this-is-just-an-example)</sup>
+- Add new `pipe` function for composing functions _[`#116`](this-is-just-an-example) [`5136b58`](this-is-just-an-example) [@somegal](this-is-just-an-example)_
 
 ### Patch Changes
 
-- Improve typings for `groupBy` function  
-<sup>PR: [`#119`](this-is-just-an-example) | Commit: [`998b9a0`](this-is-just-an-example) | Author: [@anothaone](this-is-just-an-example)</sup>
-- Fix bug with `flatten` function not flattening deeply nested arrays  
-<sup>PR: [`#118`](this-is-just-an-example) | Commit: [`751758e`](this-is-just-an-example) | Author: [@exampleguy](this-is-just-an-example)</sup>
-- Fix bug with `chunk` function returning incorrect chunks  
-<sup>PR: [`#117`](this-is-just-an-example) | Commit: [`4bca3b1`](this-is-just-an-example) | Author: [@JustAnExample](this-is-just-an-example)</sup>
+- Improve typings for `groupBy` function _[`#119`](this-is-just-an-example) [`998b9a0`](this-is-just-an-example) [@anothaone](this-is-just-an-example)_
+- Fix bug with `flatten` function not flattening deeply nested arrays _[`#118`](this-is-just-an-example) [`751758e`](this-is-just-an-example) [@exampleguy](this-is-just-an-example)_
+- Fix bug with `chunk` function returning incorrect chunks _[`#117`](this-is-just-an-example) [`4bca3b1`](this-is-just-an-example) [@JustAnExample](this-is-just-an-example)_
 
 <details><summary>Updated 1 dependency</summary>
 
@@ -89,29 +80,24 @@
 
 ### Minor Changes
 
-- Add new `zip` function for zipping arrays  
-<sup>PR: [`#113`](this-is-just-an-example) | Commit: [`ebae477`](this-is-just-an-example) | Author: [@JustAnExample](this-is-just-an-example)</sup>
+- Add new `zip` function for zipping arrays _[`#113`](this-is-just-an-example) [`ebae477`](this-is-just-an-example) [@JustAnExample](this-is-just-an-example)_
 
 ## 1.2.0
 
 ### Minor Changes
 
-- Add new `memoize` function for caching function results  
-<sup>PR: [`#111`](this-is-just-an-example) | Commit: [`c7a5fde`](this-is-just-an-example) | Author: [@anothaone](this-is-just-an-example)</sup>
+- Add new `memoize` function for caching function results _[`#111`](this-is-just-an-example) [`c7a5fde`](this-is-just-an-example) [@anothaone](this-is-just-an-example)_
 
 ### Patch Changes
 
-- Improve performance of `flatMap` function  
-<sup>PR: [`#112`](this-is-just-an-example) | Commit: [`af2e201`](this-is-just-an-example) | Author: [@somegal](this-is-just-an-example)</sup>
-- Fix bug with `uniq` function not removing duplicates  
-<sup>PR: [`#110`](this-is-just-an-example) | Commit: [`1d2a3c8`](this-is-just-an-example) | Author: [@exampleguy](this-is-just-an-example)</sup>
+- Improve performance of `flatMap` function _[`#112`](this-is-just-an-example) [`af2e201`](this-is-just-an-example) [@somegal](this-is-just-an-example)_
+- Fix bug with `uniq` function not removing duplicates _[`#110`](this-is-just-an-example) [`1d2a3c8`](this-is-just-an-example) [@exampleguy](this-is-just-an-example)_
 
 ## 1.1.1
 
 ### Patch Changes
 
-- Fix incorrect typings for `pick` function  
-<sup>PR: [`#109`](this-is-just-an-example) | Commit: [`2aa8016`](this-is-just-an-example) | Author: [@JustAnExample](this-is-just-an-example)</sup>
+- Fix incorrect typings for `pick` function _[`#109`](this-is-just-an-example) [`2aa8016`](this-is-just-an-example) [@JustAnExample](this-is-just-an-example)_
 
 <details><summary>Updated 2 dependencies</summary>
 
@@ -131,15 +117,12 @@
 
 ### Minor Changes
 
-- Add support for partial application of `compose` function  
-<sup>PR: [`#107`](this-is-just-an-example) | Commit: [`227b914`](this-is-just-an-example) | Author: [@anothaone](this-is-just-an-example)</sup>
+- Add support for partial application of `compose` function _[`#107`](this-is-just-an-example) [`227b914`](this-is-just-an-example) [@anothaone](this-is-just-an-example)_
 
 ### Patch Changes
 
-- Improve typings for `reduce` function  
-<sup>PR: [`#108`](this-is-just-an-example) | Commit: [`6bc96f9`](this-is-just-an-example) | Author: [@somegal](this-is-just-an-example)</sup>
-- Fix bug with `omit` function returning incorrect keys  
-<sup>PR: [`#106`](this-is-just-an-example) | Commit: [`cdbed3a`](this-is-just-an-example) | Author: [@exampleguy](this-is-just-an-example)</sup>
+- Improve typings for `reduce` function _[`#108`](this-is-just-an-example) [`6bc96f9`](this-is-just-an-example) [@somegal](this-is-just-an-example)_
+- Fix bug with `omit` function returning incorrect keys _[`#106`](this-is-just-an-example) [`cdbed3a`](this-is-just-an-example) [@exampleguy](this-is-just-an-example)_
 
 <details><summary>Updated 1 dependency</summary>
 
@@ -158,16 +141,11 @@
 
 ### Minor Changes
 
-- Add new `merge` function for merging objects  
-<sup>PR: [`#105`](this-is-just-an-example) | Commit: [`6b3c45f`](this-is-just-an-example) | Author: [@JustAnExample](this-is-just-an-example)</sup>
+- Add new `merge` function for merging objects _[`#105`](this-is-just-an-example) [`6b3c45f`](this-is-just-an-example) [@JustAnExample](this-is-just-an-example)_
 
 ### Patch Changes
 
-- Fix `find` function returning wrong item  
-<sup>PR: [`#104`](this-is-just-an-example) | Commit: [`59395c0`](this-is-just-an-example) | Author: [@somegal](this-is-just-an-example)</sup>
-- Improve performance of `filter` function  
-<sup>PR: [`#103`](this-is-just-an-example) | Commit: [`54563f9`](this-is-just-an-example) | Author: [@anothaone](this-is-just-an-example)</sup>
-- Fix incorrect typing for `map` function  
-<sup>PR: [`#102`](this-is-just-an-example) | Commit: [`ec0b4f0`](this-is-just-an-example) | Author: [@exampleguy](this-is-just-an-example)</sup>
-- Add support for TypeScript v5  
-<sup>PR: [`#101`](this-is-just-an-example) | Commit: [`7fd0c60`](this-is-just-an-example) | Author: [@JustAnExample](this-is-just-an-example)</sup>
+- Fix `find` function returning wrong item _[`#104`](this-is-just-an-example) [`59395c0`](this-is-just-an-example) [@somegal](this-is-just-an-example)_
+- Improve performance of `filter` function _[`#103`](this-is-just-an-example) [`54563f9`](this-is-just-an-example) [@anothaone](this-is-just-an-example)_
+- Fix incorrect typing for `map` function _[`#102`](this-is-just-an-example) [`ec0b4f0`](this-is-just-an-example) [@exampleguy](this-is-just-an-example)_
+- Add support for TypeScript v5 _[`#101`](this-is-just-an-example) [`7fd0c60`](this-is-just-an-example) [@JustAnExample](this-is-just-an-example)_

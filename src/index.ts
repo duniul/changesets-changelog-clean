@@ -7,11 +7,10 @@ type ChangelogItemFormatOptions = {
 
 export type ChangelogOptions = ChangelogItemFormatOptions & {
   repo: string;
-  inlineLinks?: boolean;
 };
 
 function parseOptions(rawOptions: Record<string, any> | null): ChangelogOptions {
-  const { repo, inlineLinks, capitalize } = rawOptions || {};
+  const { repo, capitalize } = rawOptions || {};
 
   if (!repo) {
     throw new Error(
@@ -22,7 +21,6 @@ function parseOptions(rawOptions: Record<string, any> | null): ChangelogOptions 
   return {
     repo,
     capitalize: capitalize !== false,
-    inlineLinks,
   };
 }
 
@@ -44,7 +42,7 @@ function formatSummary(summary: string, options: ChangelogItemFormatOptions) {
 
 const changelogFunctions: ChangelogFunctions = {
   getReleaseLine: async (changeset, _versionType, options) => {
-    const { repo, inlineLinks, ...formatOptinos } = parseOptions(options);
+    const { repo, ...formatOptinos } = parseOptions(options);
     const { commit, summary } = changeset;
 
     const formattedSummary = formatSummary(summary, formatOptinos);
@@ -55,27 +53,9 @@ const changelogFunctions: ChangelogFunctions = {
 
     const { links } = await getGithubInfo({ repo, commit });
 
-    if (inlineLinks) {
-      const linksString = [monospaceLink(links.pull || ''), monospaceLink(links.commit || ''), links.user || ''].filter(Boolean).join(' ');
-      const [firstSummaryLine, ...remainingSummary] = formattedSummary.split('\n');
-      return `- ${firstSummaryLine} _${linksString}_${remainingSummary.length ? `\n\n${remainingSummary.join('\n').trim()}` : ''}`;
-    } else {
-      const parts = [];
-
-      if (links.pull) {
-        parts.push(`PR: ${monospaceLink(links.pull)}`);
-      }
-
-      if (links.commit) {
-        parts.push(`Commit: ${monospaceLink(links.commit)}`);
-      }
-
-      if (links.user) {
-        parts.push(`Author: ${links.user}`);
-      }
-
-      return `- ${formattedSummary}  \n<sup>${parts.join(' | ')}</sup>`;
-    }
+    const linksString = [monospaceLink(links.pull || ''), monospaceLink(links.commit || ''), links.user || ''].filter(Boolean).join(' ');
+    const [firstSummaryLine, ...remainingSummary] = formattedSummary.split('\n');
+    return `- ${firstSummaryLine} _${linksString}_${remainingSummary.length ? `\n\n${remainingSummary.join('\n').trim()}` : ''}`;
   },
 
   getDependencyReleaseLine: async (changesets, updatedDeps, options) => {
