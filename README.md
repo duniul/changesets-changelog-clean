@@ -4,7 +4,7 @@
 
 A clean changelog entry generator with Github support for [changesets](https://github.com/changesets/changesets). 📝
 
-_Drop-in replacement for `@changests/changelog-github`._
+_Drop-in replacement for `@changesets/changelog-github`._
 
 ## Usage
 
