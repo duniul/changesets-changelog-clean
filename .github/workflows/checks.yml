@@ -3,6 +3,9 @@ name: 🕵️ Checks
 on:
   workflow_dispatch:
   push:
+    paths-ignore:
+      - 'examples/**'
+      - '*.md'
 
 permissions:
   contents: read
