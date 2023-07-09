@@ -1,5 +1,11 @@
 # changesets-changelog-clean
 
+## 1.2.1
+
+### Patch Changes
+
+- Skip updated dependencies summary if there are no updates. _[`1f2201e`](https://github.com/duniul/changesets-changelog-clean/commit/1f2201e6b357069a92831a7596b6da2f478586be) [@duniul](https://github.com/duniul)_
+
 ## 1.2.0
 
 ### Minor Changes
