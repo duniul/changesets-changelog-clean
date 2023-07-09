@@ -27,7 +27,7 @@
     "format": "rome format src --write",
     "lint:fix": "rome check src --apply-suggested",
     "lint": "rome check src",
-    "prepublish": "npm run build",
+    "prepublishOnly": "npm run build",
     "test": "vitest",
     "release": "changeset publish",
     "version": "changeset version",
