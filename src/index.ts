@@ -74,8 +74,10 @@ const changelogFunctions: ChangelogFunctions = {
     }
 
     const linksString = [monospaceLink(links.pull || ''), monospaceLink(links.commit || ''), links.user || ''].filter(Boolean).join(' ');
-    const [firstSummaryLine, ...remainingSummary] = formattedSummary.split('\n');
-    return `- ${firstSummaryLine} _${linksString}_${remainingSummary.length ? `\n\n${remainingSummary.join('\n').trim()}` : ''}`;
+    const [firstSummaryLine, ...rest] = formattedSummary.split('\n');
+    const formattedExtraLines = rest.map(line => '\t' + line).join('\n');
+
+    return `- ${firstSummaryLine} _${linksString}_${formattedExtraLines ? `\n\n${formattedExtraLines.trimEnd()}` : ''}`;
   },
 
   getDependencyReleaseLine: async (changesets, updatedDeps, options) => {
