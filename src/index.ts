@@ -81,6 +81,10 @@ const changelogFunctions: ChangelogFunctions = {
   },
 
   getDependencyReleaseLine: async (changesets, updatedDeps, options) => {
+    if (!updatedDeps.length) {
+      return '';
+    }
+
     const { repo } = parseOptions(options);
 
     const commitLinks = changesets.map(({ commit }) => (commit ? monospaceLink(ghCommitMarkdownLink(repo, commit)) : '')).filter(Boolean);
