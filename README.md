@@ -43,6 +43,8 @@ The options should be passed as the second argument in the array passed to the `
   Required.
 - `capitalize`: Whether to capitalize the first letter of the summary.  
   Default: `true`.
+- `throwOnGithubError`: Whether to throw and stop if there is an error when fetching from Github. Disabling can be useful if you want to generate a changelog for a change that hasn't been merged yet.  
+  Default: `true`.
 
 ## Motivation
 

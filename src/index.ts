@@ -2,15 +2,18 @@ import { getInfo as getGithubInfo } from '@changesets/get-github-info';
 import { ChangelogFunctions } from '@changesets/types';
 
 type ChangelogItemFormatOptions = {
-  capitalize?: boolean;
+  capitalize: boolean;
 };
+
+type GithubLinks = Awaited<ReturnType<typeof getGithubInfo>>['links'];
 
 export type ChangelogOptions = ChangelogItemFormatOptions & {
   repo: string;
+  throwOnGithubError: boolean;
 };
 
 function parseOptions(rawOptions: Record<string, any> | null): ChangelogOptions {
-  const { repo, capitalize } = rawOptions || {};
+  const { repo, capitalize, throwOnGithubError } = rawOptions || {};
 
   if (!repo) {
     throw new Error(
@@ -21,11 +24,16 @@ function parseOptions(rawOptions: Record<string, any> | null): ChangelogOptions 
   return {
     repo,
     capitalize: capitalize !== false,
+    throwOnGithubError: throwOnGithubError !== false,
   };
 }
 
 function monospaceLink(markdownLink: string): string {
   return markdownLink.replace(/^\[([^\]]+?)\]\(/g, '[`$1`](');
+}
+
+function ghCommitMarkdownLink(repo: string, commit: string): string {
+  return `[${commit.slice(0, 7)}](https://github.com/${repo}/commit/${commit})`;
 }
 
 function formatSummary(summary: string, options: ChangelogItemFormatOptions) {
@@ -42,16 +50,28 @@ function formatSummary(summary: string, options: ChangelogItemFormatOptions) {
 
 const changelogFunctions: ChangelogFunctions = {
   getReleaseLine: async (changeset, _versionType, options) => {
-    const { repo, ...formatOptinos } = parseOptions(options);
+    const { repo, throwOnGithubError, ...formatOptions } = parseOptions(options);
     const { commit, summary } = changeset;
 
-    const formattedSummary = formatSummary(summary, formatOptinos);
+    const formattedSummary = formatSummary(summary, formatOptions);
 
     if (!commit) {
       return formattedSummary;
     }
 
-    const { links } = await getGithubInfo({ repo, commit });
+    let links: Partial<GithubLinks> = {};
+
+    try {
+      const ghInfo = await getGithubInfo({ repo, commit });
+      links = ghInfo.links;
+    } catch (error) {
+      if (throwOnGithubError) {
+        throw error;
+      } else {
+        console.error('Failed to get Github info for commit', commit, error);
+        links = { commit: ghCommitMarkdownLink(repo, commit) };
+      }
+    }
 
     const linksString = [monospaceLink(links.pull || ''), monospaceLink(links.commit || ''), links.user || ''].filter(Boolean).join(' ');
     const [firstSummaryLine, ...remainingSummary] = formattedSummary.split('\n');
@@ -61,9 +81,7 @@ const changelogFunctions: ChangelogFunctions = {
   getDependencyReleaseLine: async (changesets, updatedDeps, options) => {
     const { repo } = parseOptions(options);
 
-    const commitLinks = changesets
-      .map(({ commit }) => (commit ? `[\`${commit.slice(0, 7)}\`](https://github.com/${repo}/commit/${commit})` : ''))
-      .filter(Boolean);
+    const commitLinks = changesets.map(({ commit }) => (commit ? monospaceLink(ghCommitMarkdownLink(repo, commit)) : '')).filter(Boolean);
 
     const depsPlural = updatedDeps.length === 1 ? 'dependency' : 'dependencies';
     const content =
