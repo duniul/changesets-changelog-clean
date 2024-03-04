@@ -8,9 +8,8 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "moduleResolution": "node",
+    "moduleResolution": "node16",
 
-    // custom
     "rootDir": "src",
     "outDir": "dist",
     "types": ["node"],
