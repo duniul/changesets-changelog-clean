@@ -48,8 +48,8 @@
     "generate-example": "vitest example"
   },
   "dependencies": {
-    "@changesets/get-github-info": "^0.5.2",
-    "@changesets/types": "^5.2.1"
+    "@changesets/get-github-info": "^0.6.0",
+    "@changesets/types": "^6.0.0"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.5.3",
