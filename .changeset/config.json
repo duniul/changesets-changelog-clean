@@ -1,6 +1,6 @@
 {
   "$schema": "https://unpkg.com/@changesets/config@2.3.0/schema.json",
-  "changelog": ["../dist/index.js", { "repo": "duniul/changesets-changelog-clean" }],
+  "changelog": ["../dist/index.cjs", { "repo": "duniul/changesets-changelog-clean" }],
   "commit": false,
   "fixed": [],
   "linked": [],
