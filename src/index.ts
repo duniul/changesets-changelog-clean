@@ -63,14 +63,14 @@ const changelogFunctions: ChangelogFunctions = {
 
     try {
       const ghInfo = await getGithubInfo({ repo, commit });
-      links = ghInfo.links;
+      links = { ...ghInfo.links, commit: ghCommitMarkdownLink(repo, commit) };
     } catch (error) {
       if (throwOnGithubError) {
         throw error;
-      } else {
-        console.error('Failed to get Github info for commit', commit, error);
-        links = { commit: ghCommitMarkdownLink(repo, commit) };
       }
+
+      console.error('Failed to get Github info for commit', commit, error);
+      links = { commit: ghCommitMarkdownLink(repo, commit) };
     }
 
     const linksString = [monospaceLink(links.pull || ''), monospaceLink(links.commit || ''), links.user || ''].filter(Boolean).join(' ');

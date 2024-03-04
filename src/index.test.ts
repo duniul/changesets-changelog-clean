@@ -41,11 +41,11 @@ describe(getReleaseLine.name, () => {
     const result = await getReleaseLineAndMockGithub({
       repo: 'test/test',
       pull: 1500,
-      commit: 'c1f7a8d',
+      commit: 'c1f7a8dea1fbddde9382ead635716a8d2253a41b',
       user: 'tester',
     });
 
-    expect(result).toMatchInlineSnapshot('"- Added foo bar. _[`#1500`](https://test.test/pulls/1500) [`c1f7a8d`](https://test.test/commits/c1f7a8d) [tester](https://test.test/users/tester)_"');
+    expect(result).toMatchInlineSnapshot('"- Added foo bar. _[`#1500`](https://test.test/pulls/1500) [`c1f7a8d`](https://github.com/test/test/commit/c1f7a8dea1fbddde9382ead635716a8d2253a41b) [tester](https://test.test/users/tester)_"');
   });
 });
 
@@ -55,13 +55,13 @@ describe(getDependencyReleaseLine.name, () => {
       [
         {
           id: 'test-changeset-1',
-          commit: 'bde8a2c',
+          commit: 'bde8a2cea1fbddde9382ead635716a8d2253a41b',
           summary: 'Added foo bar.',
           releases: [{ name: 'pkg-a', type: 'patch' as const }],
         },
         {
           id: 'test-changeset-2',
-          commit: 'ab36ce7',
+          commit: 'ab36ce7ea1fbddde9382ead635716a8d2253a41b',
           summary: 'Changed another thing.',
           releases: [
             { name: 'pkg-a', type: 'patch' as const },
@@ -88,7 +88,7 @@ describe(getDependencyReleaseLine.name, () => {
 
       <small>
 
-      [\`bde8a2c\`](https://github.com/test/test/commit/bde8a2c) [\`ab36ce7\`](https://github.com/test/test/commit/ab36ce7)
+      [\`bde8a2c\`](https://github.com/test/test/commit/bde8a2cea1fbddde9382ead635716a8d2253a41b) [\`ab36ce7\`](https://github.com/test/test/commit/ab36ce7ea1fbddde9382ead635716a8d2253a41b)
 
       </small>
 
