@@ -1,5 +1,15 @@
 # changesets-changelog-clean
 
+## 1.3.0
+
+### Minor Changes
+
+- Export both CJS and ESM builds. _[`#4`](https://github.com/duniul/changesets-changelog-clean/pull/4) [`f55b9af`](https://github.com/duniul/changesets-changelog-clean/commit/f55b9af2df0753e0660c3a61018c353b4fb3a610) [@duniul](https://github.com/duniul)_
+
+### Patch Changes
+
+- Ensure commits get shortened to seven characters in displayed markdown. _[`#5`](https://github.com/duniul/changesets-changelog-clean/pull/5) [`305a4c7`](https://github.com/duniul/changesets-changelog-clean/commit/305a4c76fc5a6faf9ad10d2f03fc16d2af4d89a6) [@duniul](https://github.com/duniul)_
+
 ## 1.2.1
 
 ### Patch Changes
