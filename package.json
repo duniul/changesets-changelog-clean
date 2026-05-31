@@ -38,6 +38,7 @@
     "changeset:status": "changeset status",
     "changeset:version": "changeset version",
     "changeset": "changeset",
+    "stylecheck": "oxfmt --check src && oxlint src",
     "typecheck": "tsc --noEmit",
     "format": "oxfmt --write .",
     "lint": "oxlint .",

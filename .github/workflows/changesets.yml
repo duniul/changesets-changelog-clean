@@ -1,18 +1,23 @@
 name: 🆕 Release management
+
 on:
   workflow_dispatch:
   push:
     branches:
       - main
     paths-ignore:
-      - 'examples/**'
+      - '.vscode/**'
+      - '.gitattributes'
+      - '.gitignore'
       - '*.md'
+      - 'LICENSE'
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 permissions:
   contents: write
   pull-requests: write
+  id-token: write
 
 jobs:
   main:
@@ -20,24 +25,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 🏗 Setup repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v6
 
       - name: 🏗 Setup pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8
+        uses: pnpm/action-setup@v6
 
       - name: 🏗 Setup Node
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v6
         with:
-          node-version: 18.x
+          node-version: 24.x
           cache: pnpm
 
       - name: 📦 Install dependencies
         run: pnpm install
-
-      - name: 🧱 Build project
-        run: pnpm run build # needed since the project uses itself to generate it's changelog
 
       - name: 🆕 Publish to npm or create release PR
         id: changesets
@@ -49,4 +49,3 @@ jobs:
           publish: pnpm run release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
