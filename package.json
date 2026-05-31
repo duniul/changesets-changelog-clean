@@ -43,7 +43,7 @@
     "format": "oxfmt --write .",
     "lint": "oxlint .",
     "lint:fix": "oxlint --fix .",
-    "prepublishOnly": "npm run build",
+    "prepublishOnly": "pnpm run build",
     "test": "vitest",
     "release": "changeset publish",
     "version": "changeset version"
