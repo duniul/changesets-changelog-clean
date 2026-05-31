@@ -235,4 +235,5 @@ it('generates the example changelog', async () => {
       throwOnGithubError: false,
     })
   );
+  expect(fs.existsSync('./examples/example-changelog.md')).toBe(true);
 });
