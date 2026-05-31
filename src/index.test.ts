@@ -1,12 +1,12 @@
-import { getInfo } from "@changesets/get-github-info";
-import type { NewChangesetWithCommit, VersionType } from "@changesets/types";
-import type { MockedFunction } from "vitest";
-import { describe, expect, it, vi } from "vitest";
-import changelogFunctions from "./index.js";
+import { getInfo } from '@changesets/get-github-info';
+import type { NewChangesetWithCommit, VersionType } from '@changesets/types';
+import type { MockedFunction } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
+import changelogFunctions from './index.js';
 
 vi.setConfig({ testTimeout: 5000 });
 
-vi.mock(import("@changesets/get-github-info"));
+vi.mock(import('@changesets/get-github-info'));
 
 const getGithubInfoMock = getInfo as MockedFunction<typeof getInfo>;
 
@@ -15,14 +15,14 @@ const { getReleaseLine, getDependencyReleaseLine } = changelogFunctions;
 const getReleaseLineAndMockGithub = (
   mockData: { repo: string; user: string; pull: number; commit: string },
   changesetPart?: Partial<NewChangesetWithCommit>,
-  versionType: VersionType = "patch",
+  versionType: VersionType = 'patch'
 ): Promise<string> => {
   const { repo, commit, user, pull } = mockData;
   const changeset = {
-    id: "test-changeset",
+    id: 'test-changeset',
     commit,
-    summary: "Added foo bar.",
-    releases: [{ name: "pkg-a", type: "patch" as const }],
+    summary: 'Added foo bar.',
+    releases: [{ name: 'pkg-a', type: 'patch' as const }],
     ...changesetPart,
   };
 
@@ -40,53 +40,53 @@ const getReleaseLineAndMockGithub = (
 };
 
 describe(getReleaseLine.name, () => {
-  it("returns a changeset line with relevant links", async () => {
+  it('returns a changeset line with relevant links', async () => {
     expect.hasAssertions();
     const result = await getReleaseLineAndMockGithub({
-      repo: "test/test",
+      repo: 'test/test',
       pull: 1500,
-      commit: "c1f7a8dea1fbddde9382ead635716a8d2253a41b",
-      user: "tester",
+      commit: 'c1f7a8dea1fbddde9382ead635716a8d2253a41b',
+      user: 'tester',
     });
 
     expect(result).toMatchInlineSnapshot(
-      '"- Added foo bar. _[`#1500`](https://test.test/pulls/1500) [`c1f7a8d`](https://github.com/test/test/commit/c1f7a8dea1fbddde9382ead635716a8d2253a41b) [tester](https://test.test/users/tester)_"',
+      '"- Added foo bar. _[`#1500`](https://test.test/pulls/1500) [`c1f7a8d`](https://github.com/test/test/commit/c1f7a8dea1fbddde9382ead635716a8d2253a41b) [tester](https://test.test/users/tester)_"'
     );
   });
 });
 
 describe(getDependencyReleaseLine.name, () => {
-  it("returns a changeset line with relevant links", async () => {
+  it('returns a changeset line with relevant links', async () => {
     expect.hasAssertions();
     const result = await getDependencyReleaseLine(
       [
         {
-          id: "test-changeset-1",
-          commit: "bde8a2cea1fbddde9382ead635716a8d2253a41b",
-          summary: "Added foo bar.",
-          releases: [{ name: "pkg-a", type: "patch" as const }],
+          id: 'test-changeset-1',
+          commit: 'bde8a2cea1fbddde9382ead635716a8d2253a41b',
+          summary: 'Added foo bar.',
+          releases: [{ name: 'pkg-a', type: 'patch' as const }],
         },
         {
-          id: "test-changeset-2",
-          commit: "ab36ce7ea1fbddde9382ead635716a8d2253a41b",
-          summary: "Changed another thing.",
+          id: 'test-changeset-2',
+          commit: 'ab36ce7ea1fbddde9382ead635716a8d2253a41b',
+          summary: 'Changed another thing.',
           releases: [
-            { name: "pkg-a", type: "patch" as const },
-            { name: "pkg-b", type: "minor" as const },
+            { name: 'pkg-a', type: 'patch' as const },
+            { name: 'pkg-b', type: 'minor' as const },
           ],
         },
       ],
       [
         {
-          name: "pkg-a",
-          newVersion: "1.0.1",
+          name: 'pkg-a',
+          newVersion: '1.0.1',
         },
         {
-          name: "pkg-b",
-          newVersion: "1.1.0",
+          name: 'pkg-b',
+          newVersion: '1.1.0',
         },
       ] as any[], // oxlint-disable-line typescript/no-explicit-any
-      { repo: "test/test" },
+      { repo: 'test/test' }
     );
 
     expect(result).toMatchInlineSnapshot(`
