@@ -4,7 +4,7 @@ import type { MockedFunction } from 'vitest';
 import { describe, expect, it, vi } from 'vitest';
 import changelogFunctions from './index.js';
 
-vi.setConfig({ testTimeout: 5000 });
+vi.setConfig({ testTimeout: 5000, clearMocks: true, restoreMocks: true });
 
 vi.mock(import('@changesets/get-github-info'));
 
@@ -52,6 +52,28 @@ describe(getReleaseLine.name, () => {
     expect(result).toMatchInlineSnapshot(
       '"- Added foo bar. _[`#1500`](https://test.test/pulls/1500) [`c1f7a8d`](https://github.com/test/test/commit/c1f7a8dea1fbddde9382ead635716a8d2253a41b) [tester](https://test.test/users/tester)_"'
     );
+  });
+
+  it('indents the extra lines of a multi-line summary', async () => {
+    expect.hasAssertions();
+    const result = await getReleaseLineAndMockGithub(
+      { repo: 'test/test', pull: 1500, commit: 'c1f7a8dea1fbddde9382ead635716a8d2253a41b', user: 'tester' },
+      { summary: 'Added foo bar.\nSome more details.\nAnd even more.' }
+    );
+
+    expect(result).toMatchInlineSnapshot(`
+      "- Added foo bar. _[\`#1500\`](https://test.test/pulls/1500) [\`c1f7a8d\`](https://github.com/test/test/commit/c1f7a8dea1fbddde9382ead635716a8d2253a41b) [tester](https://test.test/users/tester)_
+
+      	Some more details.
+      	And even more."
+    `);
+  });
+
+  it('throws when no repo is provided', async () => {
+    expect.hasAssertions();
+    await expect(
+      getReleaseLine({ id: 'test-changeset', summary: 'Added foo bar.', releases: [{ name: 'pkg-a', type: 'patch' }] }, 'patch', {})
+    ).rejects.toThrow('Please provide a Github repo');
   });
 
   it('returns a bulleted line without links when there is no commit', async () => {
