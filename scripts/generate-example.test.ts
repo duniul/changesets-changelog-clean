@@ -45,13 +45,13 @@ function bumpSemver(version: string, versionType: VersionType): string {
   const [major, minor, patch] = version.split('.').map(Number);
   switch (versionType) {
     case 'major': {
-      return `${major + 1}.0.0`;
+      return `${(major || 0) + 1}.0.0`;
     }
     case 'minor': {
-      return `${major}.${minor + 1}.0`;
+      return `${major}.${(minor || 0) + 1}.0`;
     }
     case 'patch': {
-      return `${major}.${minor}.${patch + 1}`;
+      return `${major}.${minor}.${(patch || 0) + 1}`;
     }
     default: {
       throw new Error(`Invalid version type: ${versionType}`);
@@ -70,6 +70,10 @@ function ch(type: VersionType, summary: string): ExampleChangeset {
   const user = exampleUsers[exampleCount % exampleUsers.length];
 
   exampleCount++;
+
+  if (!user) {
+    throw new Error('User is undefined');
+  }
 
   return { type, summary, commit, pull: exampleCount + 100, user };
 }
@@ -223,5 +227,12 @@ async function generate(options: ChangelogOptions): Promise<string> {
 
 it('generates the example changelog', async () => {
   expect.hasAssertions();
-  await fs.promises.writeFile('./examples/example-changelog.md', await generate({ repo: 'example/repo' }));
+  await fs.promises.writeFile(
+    './examples/example-changelog.md',
+    await generate({
+      repo: 'example/repo',
+      capitalize: false,
+      throwOnGithubError: false,
+    })
+  );
 });
