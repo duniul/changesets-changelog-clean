@@ -1,6 +1,6 @@
 # changesets-changelog-clean
 
-[![npm](https://img.shields.io/npm/v/sort-jsonc.svg)](https://www.npmjs.com/package/changesets-changelog-clean)
+[![npm](https://img.shields.io/npm/v/changesets-changelog-clean.svg)](https://www.npmjs.com/package/changesets-changelog-clean)
 
 A clean changelog entry generator with Github support for [changesets](https://github.com/changesets/changesets). 📝
 
@@ -48,7 +48,7 @@ The options should be passed as the second argument in the array passed to the `
 
 ## Motivation
 
-The default `@changests/changelog-github` generator is great, but it can be a bit hard to read.
+The default `@changesets/changelog-github` generator is great, but it can be a bit hard to read.
 
 - It puts the PR and author name in front of the summary, so the summaries don't start on the same column.
 - It adds extra text, like the _Thanks X_, cluttering up the changelog.
