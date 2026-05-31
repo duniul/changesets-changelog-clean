@@ -14,7 +14,7 @@ export default defineConfig({
           dts: '.d.ts',
         },
   outDir: 'dist',
-  target: 'node14',
+  target: 'node22',
   sourcemap: false,
   clean: true,
   dts: true,
