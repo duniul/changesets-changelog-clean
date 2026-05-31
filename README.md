@@ -46,6 +46,18 @@ The options should be passed as the second argument in the array passed to the `
 - `throwOnGithubError`: Whether to throw and stop if there is an error when fetching from Github. Disabling can be useful if you want to generate a changelog for a change that hasn't been merged yet.  
   Default: `true`.
 
+## Environment variables
+
+Links are generated against `https://github.com` by default.
+
+- `GITHUB_SERVER_URL`: Base URL used for commit/PR/user links (like `https://github.example.com`).  
+  Default: `https://github.com`.
+- `GITHUB_GRAPHQL_URL`: GraphQL API endpoint used to look up PRs and authors (like `https://github.example.com/api/graphql`).  
+  Default: `https://api.github.com/graphql`.
+- `GITHUB_TOKEN`: Token used to authenticate the lookups above.
+
+On GitHub Actions runners these are already set for you.
+
 ## Motivation
 
 The default `@changesets/changelog-github` generator is great, but it can be a bit hard to read.

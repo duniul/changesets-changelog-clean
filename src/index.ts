@@ -1,3 +1,4 @@
+import process from 'node:process';
 import { getInfo as getGithubInfo } from '@changesets/get-github-info';
 import type { ChangelogFunctions } from '@changesets/types';
 
@@ -35,7 +36,9 @@ function monospaceLink(markdownLink: string): string {
 }
 
 function ghCommitMarkdownLink(repo: string, commit: string): string {
-  return `[${commit.slice(0, 7)}](https://github.com/${repo}/commit/${commit})`;
+  // oxlint-disable-next-line node/no-process-env
+  const serverUrl = process.env.GITHUB_SERVER_URL || 'https://github.com';
+  return `[${commit.slice(0, 7)}](${serverUrl}/${repo}/commit/${commit})`;
 }
 
 function formatSummary(summary: string, options: ChangelogItemFormatOptions): string {
