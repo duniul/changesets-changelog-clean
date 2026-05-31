@@ -1,10 +1,10 @@
-# changesets-changelog-clean
+# changesets-changelog-clean 📝
 
 [![npm](https://img.shields.io/npm/v/changesets-changelog-clean.svg)](https://www.npmjs.com/package/changesets-changelog-clean)
 
-A clean changelog entry generator with Github support for [changesets](https://github.com/changesets/changesets). 📝
+A clean changelog entry generator with GitHub support for [changesets](https://github.com/changesets/changesets).
 
-_Drop-in replacement for `@changesets/changelog-github`._
+_Drop-in replacement for [@changesets/changelog-github](https://www.npmjs.com/package/@changesets/changelog-github)._
 
 ## Usage
 
@@ -20,16 +20,12 @@ _Drop-in replacement for `@changesets/changelog-github`._
 ## Installation
 
 ```sh
-npm install changesets-changelog-clean
-# or
-pnpm add changesets-changelog-clean
-# or
-yarn add changesets-changelog-clean
+npm install changesets-changelog-clean --save-dev
 ```
 
 ## Examples
 
-See [CHANGELOG.md](./CHANGELOG.md) for an example changelog.
+See [CHANGELOG.md](./CHANGELOG.md) and [this test changelog](./src/__snapshots__/changelog.test.ts.github.snap.md) for examples of changelogs using this package.
 
 ## Options
 
@@ -39,11 +35,11 @@ The options should be passed as the second argument in the array passed to the `
   "changelog": ["changesets-changelog-clean", { /* options */ }]
 ```
 
-- `repo`: The Github repo (including scope, like user or org) to link and look up PRs in (like `repo-scope/repo-name`).  
+- `repo`: The GitHub repo (including scope, like user or org) to link and look up PRs in (like `repo-scope/repo-name`).  
   Required.
 - `capitalize`: Whether to capitalize the first letter of the summary.  
   Default: `true`.
-- `throwOnGithubError`: Whether to throw and stop if there is an error when fetching from Github. Disabling can be useful if you want to generate a changelog for a change that hasn't been merged yet.  
+- `throwOnGithubError`: Whether to throw and stop if there is an error when fetching from GitHub. Disabling can be useful if you want to generate a changelog for a change that hasn't been merged yet.  
   Default: `true`.
 
 ## Environment variables

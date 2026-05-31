@@ -1,5 +1,5 @@
 ---
-'changesets-changelog-clean': patch
+'changesets-changelog-clean': minor
 ---
 
-Add support for Github Enterprise commits via GITHUB_SERVER_URL.
+Add support for Github Enterprise commits via `GITHUB_SERVER_URL`.
