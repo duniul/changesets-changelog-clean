@@ -15,7 +15,7 @@
     "dist",
     "README.md"
   ],
-  "packageManager": "pnpm@8.14.3",
+  "packageManager": "pnpm@11.5.0",
   "type": "module",
   "exports": {
     ".": {
