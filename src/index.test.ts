@@ -53,6 +53,17 @@ describe(getReleaseLine.name, () => {
       '"- Added foo bar. _[`#1500`](https://test.test/pulls/1500) [`c1f7a8d`](https://github.com/test/test/commit/c1f7a8dea1fbddde9382ead635716a8d2253a41b) [tester](https://test.test/users/tester)_"'
     );
   });
+
+  it('returns a bulleted line without links when there is no commit', async () => {
+    expect.hasAssertions();
+    const result = await getReleaseLine(
+      { id: 'test-changeset', summary: 'added foo bar.', releases: [{ name: 'pkg-a', type: 'patch' }] },
+      'patch',
+      { repo: 'test/test' }
+    );
+
+    expect(result).toMatchInlineSnapshot('"- Added foo bar."');
+  });
 });
 
 describe(getDependencyReleaseLine.name, () => {

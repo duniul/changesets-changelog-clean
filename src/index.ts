@@ -56,17 +56,20 @@ const changelogFunctions: ChangelogFunctions = {
     const { commit, summary } = changeset;
 
     const formattedSummary = formatSummary(summary, formatOptions);
+    const [firstSummaryLine, ...rest] = formattedSummary.split('\n');
+    const formattedExtraLines = rest.map(line => '\t' + line).join('\n');
+    const extraLinesSuffix = formattedExtraLines ? `\n\n${formattedExtraLines.trimEnd()}` : '';
 
     if (!commit) {
-      return formattedSummary;
+      return `- ${firstSummaryLine}${extraLinesSuffix}`;
     }
 
-    // oxlint-disable-next-line no-useless-assignment
-    let links: Partial<GithubLinks> = {};
+    const commitLink = ghCommitMarkdownLink(repo, commit);
+    let links: Partial<GithubLinks> = { commit: commitLink };
 
     try {
       const ghInfo = await getGithubInfo({ repo, commit });
-      links = { ...ghInfo.links, commit: ghCommitMarkdownLink(repo, commit) };
+      links = { ...ghInfo.links, commit: commitLink };
     } catch (error) {
       if (throwOnGithubError) {
         throw error;
@@ -74,14 +77,11 @@ const changelogFunctions: ChangelogFunctions = {
 
       // oxlint-disable-next-line no-console
       console.error('Failed to get Github info for commit', commit, error);
-      links = { commit: ghCommitMarkdownLink(repo, commit) };
     }
 
     const linksString = [monospaceLink(links.pull || ''), monospaceLink(links.commit || ''), links.user || ''].filter(Boolean).join(' ');
-    const [firstSummaryLine, ...rest] = formattedSummary.split('\n');
-    const formattedExtraLines = rest.map(line => '\t' + line).join('\n');
 
-    return `- ${firstSummaryLine} _${linksString}_${formattedExtraLines ? `\n\n${formattedExtraLines.trimEnd()}` : ''}`;
+    return `- ${firstSummaryLine} _${linksString}_${extraLinesSuffix}`;
   },
 
   // oxlint-disable-next-line require-await
