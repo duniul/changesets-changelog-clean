@@ -3,14 +3,14 @@ import { getInfo as getGithubInfo } from '@changesets/get-github-info';
 import type { ChangelogFunctions } from '@changesets/types';
 
 type ChangelogItemFormatOptions = {
-  capitalize: boolean;
+  capitalize?: boolean;
 };
 
 type GithubLinks = Awaited<ReturnType<typeof getGithubInfo>>['links'];
 
 export type ChangelogOptions = ChangelogItemFormatOptions & {
   repo: string;
-  throwOnGithubError: boolean;
+  throwOnGithubError?: boolean;
 };
 
 // oxlint-disable-next-line typescript/no-explicit-any
