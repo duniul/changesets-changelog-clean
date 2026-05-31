@@ -1,5 +1,5 @@
 import { getInfo as getGithubInfo } from '@changesets/get-github-info';
-import { ChangelogFunctions } from '@changesets/types';
+import type { ChangelogFunctions } from '@changesets/types';
 
 type ChangelogItemFormatOptions = {
   capitalize: boolean;
@@ -12,6 +12,7 @@ export type ChangelogOptions = ChangelogItemFormatOptions & {
   throwOnGithubError: boolean;
 };
 
+// oxlint-disable-next-line typescript/no-explicit-any
 function parseOptions(rawOptions: Record<string, any> | null): ChangelogOptions {
   const { repo, capitalize, throwOnGithubError } = rawOptions || {};
 
@@ -29,6 +30,7 @@ function parseOptions(rawOptions: Record<string, any> | null): ChangelogOptions 
 }
 
 function monospaceLink(markdownLink: string): string {
+  // oxlint-disable-next-line unicorn/prefer-string-replace-all
   return markdownLink.replace(/^\[([^\]]+?)\]\(/g, '[`$1`](');
 }
 
@@ -36,7 +38,7 @@ function ghCommitMarkdownLink(repo: string, commit: string): string {
   return `[${commit.slice(0, 7)}](https://github.com/${repo}/commit/${commit})`;
 }
 
-function formatSummary(summary: string, options: ChangelogItemFormatOptions) {
+function formatSummary(summary: string, options: ChangelogItemFormatOptions): string {
   const { capitalize } = options;
 
   let formatted = summary.trim();
@@ -59,6 +61,7 @@ const changelogFunctions: ChangelogFunctions = {
       return formattedSummary;
     }
 
+    // oxlint-disable-next-line no-useless-assignment
     let links: Partial<GithubLinks> = {};
 
     try {
@@ -69,6 +72,7 @@ const changelogFunctions: ChangelogFunctions = {
         throw error;
       }
 
+      // oxlint-disable-next-line no-console
       console.error('Failed to get Github info for commit', commit, error);
       links = { commit: ghCommitMarkdownLink(repo, commit) };
     }
@@ -80,6 +84,7 @@ const changelogFunctions: ChangelogFunctions = {
     return `- ${firstSummaryLine} _${linksString}_${formattedExtraLines ? `\n\n${formattedExtraLines.trimEnd()}` : ''}`;
   },
 
+  // oxlint-disable-next-line require-await
   getDependencyReleaseLine: async (changesets, updatedDeps, options) => {
     if (!updatedDeps.length) {
       return '';
@@ -102,4 +107,5 @@ const changelogFunctions: ChangelogFunctions = {
   },
 };
 
+// oxlint-disable-next-line import/no-default-export
 export default changelogFunctions;
