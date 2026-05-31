@@ -64,6 +64,38 @@ describe(getReleaseLine.name, () => {
 
     expect(result).toMatchInlineSnapshot('"- Added foo bar."');
   });
+
+  it('does not capitalize the summary when capitalize is false', async () => {
+    expect.hasAssertions();
+    const result = await getReleaseLine(
+      { id: 'test-changeset', summary: 'added foo bar.', releases: [{ name: 'pkg-a', type: 'patch' }] },
+      'patch',
+      { repo: 'test/test', capitalize: false }
+    );
+
+    expect(result).toMatchInlineSnapshot('"- added foo bar."');
+  });
+
+  it('falls back to just a commit link when Github lookup fails and throwOnGithubError is false', async () => {
+    expect.hasAssertions();
+    getGithubInfoMock.mockRejectedValueOnce(new Error('boom'));
+    vi.spyOn(console, 'error').mockReturnValue();
+
+    const result = await getReleaseLine(
+      {
+        id: 'test-changeset',
+        commit: 'c1f7a8dea1fbddde9382ead635716a8d2253a41b',
+        summary: 'Added foo bar.',
+        releases: [{ name: 'pkg-a', type: 'patch' }],
+      },
+      'patch',
+      { repo: 'test/test', throwOnGithubError: false }
+    );
+
+    expect(result).toMatchInlineSnapshot(
+      '"- Added foo bar. _[`c1f7a8d`](https://github.com/test/test/commit/c1f7a8dea1fbddde9382ead635716a8d2253a41b)_"'
+    );
+  });
 });
 
 describe(getDependencyReleaseLine.name, () => {
