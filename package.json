@@ -46,8 +46,7 @@
     "prepublishOnly": "npm run build",
     "test": "vitest",
     "release": "changeset publish",
-    "version": "changeset version",
-    "generate-example": "vitest example"
+    "version": "changeset version"
   },
   "dependencies": {
     "@changesets/get-github-info": "^0.8.0",

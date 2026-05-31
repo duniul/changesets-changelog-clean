@@ -26,14 +26,6 @@
 
 - Properly indent lines for multi-line changesets. _[`c5157bd`](https://github.com/duniul/changesets-changelog-clean/commit/c5157bd32a9f48f65da4a8f55b63afc14e493aa4) [@duniul](https://github.com/duniul)_
 
-<details><summary>Updated 0 dependencies</summary>
-
-<small>
-
-</small>
-
-</details>
-
 ## 1.1.0
 
 ### Minor Changes
@@ -46,11 +38,3 @@
 - Remove `preinstall` script that only allowed installation via pnpm.
   _[`41c5509`](https://github.com/duniul/changesets-changelog-clean/commit/41c55092722ab1c6d08ffccbe70a1836c8bbcb50)
   [@duniul](https://github.com/duniul)_
-
-<details><summary>Updated 0 dependencies</summary>
-
-<small>
-
-</small>
-
-</details>

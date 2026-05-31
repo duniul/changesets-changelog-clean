@@ -29,7 +29,7 @@ yarn add changesets-changelog-clean
 
 ## Examples
 
-See [examples/example-changelog.md](./examples/example-changelog.md) for an example changelog.
+See [CHANGELOG.md](./CHANGELOG.md) for an example changelog.
 
 ## Options
 
