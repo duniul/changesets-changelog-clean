@@ -1,5 +1,17 @@
 # changesets-changelog-clean
 
+## 1.4.0
+
+### Minor Changes
+
+- Add support for Github Enterprise commits via `GITHUB_SERVER_URL`. _[`e4777e1`](https://github.com/duniul/changesets-changelog-clean/commit/e4777e130d15de04bb58881ac19e6e0c5a39647d) [@duniul](https://github.com/duniul)_
+
+### Patch Changes
+
+- Add bullet and fix indentation for changesets without a commit. _[`2654763`](https://github.com/duniul/changesets-changelog-clean/commit/2654763160d04acbd94865309558936fff5ea479) [@duniul](https://github.com/duniul)_
+- Type `capitalize` and `throwOnGithubError` as optional. _[`5211161`](https://github.com/duniul/changesets-changelog-clean/commit/52111615d47159a77c406d9854af10f054ac3089) [@duniul](https://github.com/duniul)_
+- Update `changesets` sub-dependencies. _[`da616f5`](https://github.com/duniul/changesets-changelog-clean/commit/da616f55b3cf2c926441feb2fde288f587c71b03) [@duniul](https://github.com/duniul)_
+
 ## 1.3.0
 
 ### Minor Changes
