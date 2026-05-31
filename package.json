@@ -38,6 +38,7 @@
     "changeset:status": "changeset status",
     "changeset:version": "changeset version",
     "changeset": "changeset",
+    "typecheck": "tsc --noEmit",
     "format": "oxfmt --write .",
     "lint": "oxlint .",
     "lint:fix": "oxlint --fix .",
@@ -53,9 +54,7 @@
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.1",
-    "@tsconfig/node14": "^14.1.0",
-    "@tsconfig/strictest": "^2.0.3",
-    "@types/node": "^18.16.3",
+    "@types/node": "20.19.41",
     "oxfmt": "0.52.0",
     "oxlint": "1.67.0",
     "oxlint-tsgolint": "0.23.0",
