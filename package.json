@@ -1,6 +1,6 @@
 {
   "name": "changesets-changelog-clean",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "A clean changelog entry generator with Github support for `changesets`",
   "keywords": [
     "changelog",
