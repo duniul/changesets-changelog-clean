@@ -39,6 +39,9 @@ jobs:
       - name: 📦 Install dependencies
         run: pnpm install
 
+      - name: 🏗 Build
+        run: pnpm run build
+
       - name: 🆕 Publish to npm or create release PR
         id: changesets
         uses: changesets/action@v1
